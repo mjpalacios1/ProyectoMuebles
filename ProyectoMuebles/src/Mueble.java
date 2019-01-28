@@ -2,7 +2,7 @@ public class Mueble {
 
     private String tipo;
 
-    private String tamanio;
+    private double tamanio;
 
     private Madera madera;
     
@@ -11,7 +11,7 @@ public class Mueble {
     public Mueble() {
     }
 
-    public Mueble(String tipo, String tamanio, Madera madera, float precio) {
+    public Mueble(String tipo, double tamanio, Madera madera, float precio) {
         this.tipo = tipo;
         this.tamanio = tamanio;
         this.madera = madera;
@@ -26,11 +26,11 @@ public class Mueble {
         this.tipo = tipo;
     }
 
-    public String getTamanio() {
+    public double getTamanio() {
         return tamanio;
     }
 
-    public void setTamanio(String tamanio) {
+    public void setTamanio(double tamanio) {
         this.tamanio = tamanio;
     }
 

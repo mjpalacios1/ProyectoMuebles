@@ -72,11 +72,21 @@ public class Venta {
         this.codigo = codigo;
     }
     public double calcularCosto(){
-        double resultado=1;
+        double resultado=0;
         for (int i = 0; i < muebles.size(); i++) {
             resultado+=muebles.get(i).getPrecio();
         }
         return resultado;
     }
-    
+    public void aniadirMueble(Mueble m){
+        muebles.add(m);
+    }
+    public double restarMadera(){
+        double resultado=0;
+        for (int i = 0; i < muebles.size(); i++) {
+            resultado+=muebles.get(i).getTamanio();
+        }
+        return resultado;
+    }
+   
 }
