@@ -36,6 +36,7 @@ public class Venta extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(204, 204, 0));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(247, 233, 233));
@@ -55,6 +56,7 @@ public class Venta extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pf_1548641692.jpg"))); // NOI18N
         jButton2.setText("Comprar Madera");
+        jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

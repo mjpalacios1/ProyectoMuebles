@@ -15,7 +15,9 @@ public class FabricacionMueble {
         this.acabados = acabados;
         this.mueble = mueble;
     }
-
+    public void fabricarMueble(){
+        mueble.getMadera().actualizarCantidad();
+    }
     public String getArticulos() {
         return articulos;
     }

@@ -4,15 +4,22 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Madera {
 
     private String tipo;
 
-    private float cantidad=0;
+    private float cantidad;
 
     public Madera() {
     }
+
+    public Madera(String tipo, float cantidad) {
+        this.tipo = tipo;
+        this.cantidad = cantidad;
+    }
+    
 
     public String getTipo() {
         return tipo;
@@ -37,6 +44,7 @@ public class Madera {
          Connection con;
          float cantidadantigua=obtenerStock();
          try {
+             System.out.println(cantidad);
                con = coneccionBD.obtener();
             PreparedStatement psInsertar = con.prepareStatement("UPDATE madera set cantidad=" + (cantidadantigua+cantidad)+"where tipo= '" + tipo + "'");
             psInsertar.execute();
@@ -62,6 +70,25 @@ public class Madera {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             return 0;
+     
+        }
+    }
+     public ArrayList<Madera> obtenerMaderas(){
+        Conexion coneccionBD = new Conexion();
+         Connection con;
+         ArrayList<Madera>maderas=new ArrayList();
+         try {
+            con = coneccionBD.obtener();
+            java.sql.Statement ejecutor = con.createStatement();
+            ResultSet rs = ejecutor.executeQuery("Select * from madera");
+            while (rs.next()) {
+              maderas.add(new Madera(rs.getString("tipo"),(float)(rs.getDouble("cantidad"))));
+            }
+            coneccionBD.cerrar();
+            return maderas;
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            return maderas;
      
         }
     }

@@ -5,8 +5,11 @@
  */
 package proyectomuebles;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import clases.*;
 
 /**
  *
@@ -18,9 +21,14 @@ public class RealizarVenta extends javax.swing.JFrame {
      * Creates new form RealizarVenta
      */
     float total=0;
-     ArrayList<clases.Mueble>mueblesVenta=new ArrayList();
+     ArrayList<Mueble>mueblesVenta=new ArrayList();
+     ArrayList<Madera>madera=new ArrayList();
+     DefaultTableModel model;
     public RealizarVenta() {
         initComponents();
+        model=(DefaultTableModel)tabla.getModel();
+        Madera md=new Madera();
+        madera=md.obtenerMaderas();
     }
 
     /**
@@ -55,9 +63,11 @@ public class RealizarVenta extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         txtMadera = new javax.swing.JComboBox<>();
+        jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 237, 236));
@@ -70,6 +80,11 @@ public class RealizarVenta extends javax.swing.JFrame {
                 txtNombreActionPerformed(evt);
             }
         });
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
 
         jLabel3.setText("Cédula:");
 
@@ -78,12 +93,22 @@ public class RealizarVenta extends javax.swing.JFrame {
                 txtCedulaActionPerformed(evt);
             }
         });
+        txtCedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCedulaKeyTyped(evt);
+            }
+        });
 
         jLabel4.setText("Teléfono:");
 
         txtTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTelefonoActionPerformed(evt);
+            }
+        });
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyTyped(evt);
             }
         });
 
@@ -98,6 +123,11 @@ public class RealizarVenta extends javax.swing.JFrame {
         txtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodigoActionPerformed(evt);
+            }
+        });
+        txtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCodigoKeyTyped(evt);
             }
         });
 
@@ -182,15 +212,14 @@ public class RealizarVenta extends javax.swing.JFrame {
             }
         });
 
+        txtCantidad.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Tipo", "Cantidad", "Precio"
+                "Tipo", "Cantidad", "Madera", "Precio"
             }
         ));
         jScrollPane1.setViewportView(tabla);
@@ -201,7 +230,7 @@ public class RealizarVenta extends javax.swing.JFrame {
         txtTotal.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Realizar Compra");
+        jButton2.setText("Realizar Venta");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -232,21 +261,22 @@ public class RealizarVenta extends javax.swing.JFrame {
                             .addGap(26, 26, 26)
                             .addComponent(jLabel7)
                             .addGap(38, 38, 38)
-                            .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jLabel8)
-                        .addGap(26, 26, 26)
-                        .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtMadera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(jButton1)))
-                .addContainerGap(48, Short.MAX_VALUE))
+                            .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel8)
+                .addGap(26, 26, 26)
+                .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtMadera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addGap(34, 34, 34))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,6 +301,17 @@ public class RealizarVenta extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 280, -1, 300));
+
+        jButton3.setBackground(new java.awt.Color(255, 204, 204));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icon-home-hover.png"))); // NOI18N
+        jButton3.setBorderPainted(false);
+        jButton3.setContentAreaFilled(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 90, 90));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pf_1548639018.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -308,29 +349,73 @@ public class RealizarVenta extends javax.swing.JFrame {
         md.setTipo(txtMadera.getSelectedItem().toString());
         for(int i=0;i<muebles.size();i++){
             if(txtTipo.getSelectedItem().toString().equals(muebles.get(i).getTipo())){
-                  muebles.get(i).setMadera(md);
                   double cantMadera=muebles.get(i).getTamanio()*Integer.parseInt(txtCantidad.getValue().toString());
                   if((md.obtenerStock()-cantMadera)>0){
                      Object[] newRow={txtTipo.getSelectedItem()
-                          ,txtCantidad.getValue()
+                          ,txtCantidad.getValue(),md.getTipo()
                           ,Integer.parseInt(txtCantidad.getValue().toString())*muebles.get(i).getPrecio()};
                      total+=Integer.parseInt(txtCantidad.getValue().toString())*muebles.get(i).getPrecio();
                      txtTotal.setText(""+total);
+                     model.addRow(newRow);
+                     md.setCantidad((float)-cantMadera);
+                     muebles.get(i).setMadera(md);
                      mueblesVenta.add(muebles.get(i));
+                     FabricacionMueble fab=new FabricacionMueble("barniz","acabado de lujo",muebles.get(i));
+                     fab.fabricarMueble();
                   }else{
-                      JOptionPane.showMessageDialog(this,"NO existe suficiente stock de madera");
+                      JOptionPane.showMessageDialog(this,"No existe suficiente stock de madera, se tiene "+md.obtenerStock()+" y se necesita "+cantMadera);
                   }
                   
             }
         }
    
     }//GEN-LAST:event_jButton1ActionPerformed
-
+   
+    
     private void txtTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTipoActionPerformed
+        public boolean validarCampos(){
+        if(txtCedula.getText().equals("")||txtCodigo.getText().equals("")
+                ||txtNombre.getText().equals("")
+                ||txtDireccion.getText().equals("")
+                ||txtTelefono.getText().equals("")
+                ||total==0){
+            return false;
+           
+        }
+        return true;
+    }
+        public void validarLetras(KeyEvent ke) { 
+   
+             char c=ke.getKeyChar();      
+          if(Character.isDigit(c)) { 
+              getToolkit().beep(); 
+               
+              ke.consume(); 
+               
+             JOptionPane.showMessageDialog(this,"Ingrese solo letras");
+               
+          }     
+                     
+        } 
+        public void validarNumeros(KeyEvent ke) { 
+            char c=ke.getKeyChar(); 
+            
+          if(Character.isLetter(c)||Character.isAlphabetic(c)) { 
+              getToolkit().beep(); 
+               
+              ke.consume(); 
+               
+              JOptionPane.showMessageDialog(this,"Ingrese solo numeros");
+               
+          } 
+         
+        } 
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if(validarCampos()){
+ 
         clases.Cliente cliente=new clases.Cliente();
       cliente.setCedula(txtCedula.getText());
       cliente.setCodigo(Integer.parseInt(txtCodigo.getText()));
@@ -340,11 +425,49 @@ public class RealizarVenta extends javax.swing.JFrame {
       
         clases.Venta venta=new clases.Venta(total,cliente.getCodigo(),cliente,mueblesVenta);
         venta.realizarVenta();
+        JOptionPane.showMessageDialog(this,"Se ha realizado la venta");
+        Venta venta1=new Venta();
+        venta1.setVisible(true);
+        this.dispose();
+          }else{
+            JOptionPane.showMessageDialog(this,"Se debe completar todos los campos");
+        }
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txtMaderaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaderaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaderaActionPerformed
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        
+        validarLetras(evt);
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKeyTyped
+        // TODO add your handling code here:
+        validarNumeros(evt);
+    }//GEN-LAST:event_txtCodigoKeyTyped
+
+    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
+        if(txtTelefono.getText().length()>9){
+            evt.consume();
+        } 
+        validarNumeros(evt);
+    }//GEN-LAST:event_txtTelefonoKeyTyped
+
+    private void txtCedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCedulaKeyTyped
+        if(txtCedula.getText().length()>9){
+            evt.consume();
+        } 
+        validarNumeros(evt);
+    }//GEN-LAST:event_txtCedulaKeyTyped
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+      Venta venta1=new Venta();
+        venta1.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -384,6 +507,7 @@ public class RealizarVenta extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

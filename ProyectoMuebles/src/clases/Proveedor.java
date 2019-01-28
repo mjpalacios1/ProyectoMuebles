@@ -36,9 +36,9 @@ public class Proveedor extends Persona {
             con = coneccionBD.obtener();
             psInsertar = con.prepareStatement("INSERT INTO proveedor (cedula,nombre,telefono,direccion)" + " values(?,?,?,?)");
             psInsertar.setString(1,getCedula());
-            psInsertar.setString(1,getNombre());
-            psInsertar.setString(1,getTelefono());
-            psInsertar.setString(1,getDireccion()); 
+            psInsertar.setString(2,getNombre());
+            psInsertar.setString(3,getTelefono());
+            psInsertar.setString(4,getDireccion()); 
             psInsertar.execute();
             coneccionBD.cerrar();
         } catch (SQLException ex) {
