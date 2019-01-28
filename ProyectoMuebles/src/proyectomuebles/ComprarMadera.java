@@ -68,7 +68,7 @@ public class ComprarMadera extends javax.swing.JFrame {
         });
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Fabricar");
+        jButton1.setText("Comprar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -248,12 +248,9 @@ public class ComprarMadera extends javax.swing.JFrame {
       pr.setTelefono(txtTelefono.getText());
       clases.Madera md=new clases.Madera();
       md.setTipo(txtTipo.getSelectedItem().toString());
-     md.setCantidad(Float.parseFloat(cantidad.getValue().toString()));
-      
-     
-      
-      
+     md.setCantidad(Float.parseFloat(cantidad.getValue().toString())); 
       compra=new Compra(Integer.parseInt(cantidad.getValue().toString()),pr,md);
+      compra.realizarCompra();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed

@@ -19,6 +19,10 @@ public class Compra {
         this.madera = madera;
     }
 
+    public void realizarCompra(){
+        madera.actualizarCantidad();
+        proveedor.InsertarProveedor();
+    }
     public int getCantidad() {
         return cantidad;
     }
@@ -27,9 +31,6 @@ public class Compra {
         this.cantidad = cantidad;
     }
 
-   
-
- 
 
     public Proveedor getProveedor() {
         return proveedor;
