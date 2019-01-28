@@ -71,5 +71,12 @@ public class Venta {
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
+    public double calcularCosto(){
+        double resultado=1;
+        for (int i = 0; i < muebles.size(); i++) {
+            resultado+=muebles.get(i).getPrecio();
+        }
+        return resultado;
+    }
     
 }
