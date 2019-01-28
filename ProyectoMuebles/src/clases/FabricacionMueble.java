@@ -1,3 +1,5 @@
+package clases;
+
 public class FabricacionMueble {
 
     private String articulos;

@@ -1,3 +1,5 @@
+package clases;
+
 public class Empleado extends Persona {
 
     private int numId;

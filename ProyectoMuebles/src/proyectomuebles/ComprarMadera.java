@@ -5,12 +5,14 @@
  */
 package proyectomuebles;
 
+import clases.Compra;
+
 /**
  *
  * @author MJPC_
  */
 public class ComprarMadera extends javax.swing.JFrame {
-
+     Compra compra;
     /**
      * Creates new form RealizarVenta
      */
@@ -58,7 +60,7 @@ public class ComprarMadera extends javax.swing.JFrame {
 
         jLabel3.setText("Cantidad:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CANELO", "CIPRES", "CEDRO" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);

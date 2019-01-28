@@ -1,3 +1,5 @@
+package clases;
+
 public class Proveedor extends Persona {
 
     private int codigo;

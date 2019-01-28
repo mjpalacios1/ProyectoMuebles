@@ -1,3 +1,5 @@
+package clases;
+
 public class Madera {
 
     private String tipo;
