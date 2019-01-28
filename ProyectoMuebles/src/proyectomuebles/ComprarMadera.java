@@ -240,7 +240,7 @@ public class ComprarMadera extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      compra=new Compra(Integer.parseInt(cantidad.getValue()));
+      compra=new Compra(Integer.parseInt(cantidad.getValue().toString()),);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
