@@ -81,7 +81,7 @@ public class Venta {
     public void aniadirMueble(Mueble m){
         muebles.add(m);
     }
-    public double restarMadera(){
+    public double obtenerMadera(){
         double resultado=0;
         for (int i = 0; i < muebles.size(); i++) {
             resultado+=muebles.get(i).getTamanio();
