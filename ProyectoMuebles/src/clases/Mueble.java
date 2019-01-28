@@ -12,7 +12,7 @@ public class Mueble {
 
     public Mueble() {
     }
-
+    
     public Mueble(String tipo, double tamanio, Madera madera, float precio) {
         this.tipo = tipo;
         this.tamanio = tamanio;
@@ -20,6 +20,12 @@ public class Mueble {
         this.precio = precio;
     }
 
+    public void actualizarStockMadera(){
+        madera.actualizarCantidad();
+    }
+    public void obtenerStockMadera(){
+        madera.obtenerStock();
+    }
     public String getTipo() {
         return tipo;
     }
