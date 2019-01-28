@@ -73,6 +73,12 @@ public class Venta {
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
+    public void realizarVenta(){
+        cliente.InsertarCliente();
+        for(int i=0;i<muebles.size();i++){
+           
+        }
+    }
     public double calcularCosto(){
         double resultado=0;
         for (int i = 0; i < muebles.size(); i++) {
