@@ -5,8 +5,7 @@ import java.util.ArrayList;
 
 public class Venta {
 
-    private int cantidad;
-
+   
     private float total;
 
     private int codigo;
@@ -17,8 +16,8 @@ public class Venta {
     public Venta() {
     }
 
-    public Venta(int cantidad, float total, int codigo, Cliente cliente, ArrayList<Mueble> muebles) {
-        this.cantidad = cantidad;
+    public Venta( float total, int codigo, Cliente cliente, ArrayList<Mueble> muebles) {
+        
         this.total = total;
         this.codigo = codigo;
         this.cliente = cliente;
@@ -50,14 +49,7 @@ public class Venta {
     }
  
 
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
+    
     public float getPrecio() {
         return total;
     }
@@ -76,7 +68,7 @@ public class Venta {
     public void realizarVenta(){
         cliente.InsertarCliente();
         for(int i=0;i<muebles.size();i++){
-           
+           muebles.get(i).getMadera().actualizarCantidad();
         }
     }
     public double calcularCosto(){

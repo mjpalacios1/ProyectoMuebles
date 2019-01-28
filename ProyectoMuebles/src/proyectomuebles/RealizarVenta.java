@@ -5,6 +5,9 @@
  */
 package proyectomuebles;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author MJPC_
@@ -14,6 +17,8 @@ public class RealizarVenta extends javax.swing.JFrame {
     /**
      * Creates new form RealizarVenta
      */
+    float total=0;
+     ArrayList<clases.Mueble>mueblesVenta=new ArrayList();
     public RealizarVenta() {
         initComponents();
     }
@@ -36,7 +41,7 @@ public class RealizarVenta extends javax.swing.JFrame {
         txtTelefono = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtDireccion = new javax.swing.JTextField();
-        txtNombre1 = new javax.swing.JTextField();
+        txtCodigo = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -46,7 +51,7 @@ public class RealizarVenta extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtTotal = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         txtMadera = new javax.swing.JComboBox<>();
@@ -90,9 +95,9 @@ public class RealizarVenta extends javax.swing.JFrame {
             }
         });
 
-        txtNombre1.addActionListener(new java.awt.event.ActionListener() {
+        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombre1ActionPerformed(evt);
+                txtCodigoActionPerformed(evt);
             }
         });
 
@@ -121,7 +126,7 @@ public class RealizarVenta extends javax.swing.JFrame {
                             .addComponent(jLabel9))
                         .addGap(76, 76, 76)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNombre1)
+                            .addComponent(txtCodigo)
                             .addComponent(txtNombre))))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
@@ -131,7 +136,7 @@ public class RealizarVenta extends javax.swing.JFrame {
                 .addGap(4, 4, 4)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(txtNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -192,8 +197,8 @@ public class RealizarVenta extends javax.swing.JFrame {
 
         jLabel7.setText("Total:");
 
-        jTextField1.setEditable(false);
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        txtTotal.setEditable(false);
+        txtTotal.setBackground(new java.awt.Color(255, 255, 255));
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Realizar Compra");
@@ -227,7 +232,7 @@ public class RealizarVenta extends javax.swing.JFrame {
                             .addGap(26, 26, 26)
                             .addComponent(jLabel7)
                             .addGap(38, 38, 38)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(jLabel8)
@@ -259,7 +264,7 @@ public class RealizarVenta extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -289,59 +294,57 @@ public class RealizarVenta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDireccionActionPerformed
 
-    private void txtNombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombre1ActionPerformed
+    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombre1ActionPerformed
+    }//GEN-LAST:event_txtCodigoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        double maderaGastada;
-        clases.Mueble mueble = new clases.Mueble();
+
+        ArrayList<clases.Mueble>muebles=new ArrayList();
+        muebles.add(new clases.Mueble("SILLA",5,new clases.Madera(),20));
+        muebles.add(new clases.Mueble("MESA",10,new clases.Madera(),50));
+        muebles.add(new clases.Mueble("COMODA",15,new clases.Madera(),60));
         clases.Madera md= new clases.Madera();
         md.setTipo(txtMadera.getSelectedItem().toString());
-              
-        if(txtTipo.getSelectedItem().toString().equals("SILLA"))
-        {
-            mueble.setPrecio(20);
-            mueble.setTamanio(5);
-            mueble.setTipo(txtTipo.getSelectedItem().toString());
-            mueble.setMadera(md);
-            maderaGastada=mueble.getTamanio()*Integer.parseInt(txtCantidad.getValue().toString());
-              Object[] newRow={txtTipo.getSelectedItem(),txtCantidad.getValue(),Integer.parseInt(txtCantidad.getValue().toString())*mueble.getPrecio()};
-              
+        for(int i=0;i<muebles.size();i++){
+            if(txtTipo.getSelectedItem().toString().equals(muebles.get(i).getTipo())){
+                  muebles.get(i).setMadera(md);
+                  double cantMadera=muebles.get(i).getTamanio()*Integer.parseInt(txtCantidad.getValue().toString());
+                  if((md.obtenerStock()-cantMadera)>0){
+                     Object[] newRow={txtTipo.getSelectedItem()
+                          ,txtCantidad.getValue()
+                          ,Integer.parseInt(txtCantidad.getValue().toString())*muebles.get(i).getPrecio()};
+                     total+=Integer.parseInt(txtCantidad.getValue().toString())*muebles.get(i).getPrecio();
+                     txtTotal.setText(""+total);
+                     mueblesVenta.add(muebles.get(i));
+                  }else{
+                      JOptionPane.showMessageDialog(this,"NO existe suficiente stock de madera");
+                  }
+                  
+            }
         }
-        if(txtTipo.getSelectedItem().toString().equals("MESA"))
-        {
-            mueble.setPrecio(50);
-            mueble.setTamanio(10);
-            mueble.setTipo(txtTipo.getSelectedItem().toString());
-            mueble.setMadera(md);
-            maderaGastada=mueble.getTamanio()*Integer.parseInt(txtCantidad.getValue().toString());
-              Object[] newRow={txtTipo.getSelectedItem(),txtCantidad.getValue(),Integer.parseInt(txtCantidad.getValue().toString())*mueble.getPrecio()};
-        }
-        if(txtTipo.getSelectedItem().toString().equals("COMODA"))
-        {
-            mueble.setPrecio(60);
-            mueble.setTamanio(15);
-            mueble.setTipo(txtTipo.getSelectedItem().toString());
-            mueble.setMadera(md);
-            maderaGastada=mueble.getTamanio()*Integer.parseInt(txtCantidad.getValue().toString());
-              Object[] newRow={txtTipo.getSelectedItem(),txtCantidad.getValue(),Integer.parseInt(txtCantidad.getValue().toString())*mueble.getPrecio()};
-        }
-        
-      
+   
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTipoActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        clases.Cliente cliente=new clases.Cliente();
+      cliente.setCedula(txtCedula.getText());
+      cliente.setCodigo(Integer.parseInt(txtCodigo.getText()));
+      cliente.setNombre(txtNombre.getText());
+      cliente.setDireccion(txtDireccion.getText());
+      cliente.setTelefono(txtTelefono.getText());
+      
+        clases.Venta venta=new clases.Venta(total,cliente.getCodigo(),cliente,mueblesVenta);
+        venta.realizarVenta();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     private void txtMaderaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaderaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaderaActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -393,15 +396,15 @@ public class RealizarVenta extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tabla;
     private javax.swing.JSpinner txtCantidad;
     private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JComboBox<String> txtMadera;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtNombre1;
     private javax.swing.JTextField txtTelefono;
     private javax.swing.JComboBox<String> txtTipo;
+    private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }
