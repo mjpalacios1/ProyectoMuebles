@@ -4,9 +4,6 @@ public class Compra {
 
     private int cantidad;
 
-    private float precio;
-
-    private int codigo;
 
     Proveedor proveedor;
     Madera madera;
@@ -14,10 +11,10 @@ public class Compra {
     public Compra() {
     }
 
-    public Compra(int cantidad, float precio, int codigo, Proveedor proveedor, Madera madera) {
+    public Compra(int cantidad,Proveedor proveedor, Madera madera) {
         this.cantidad = cantidad;
-        this.precio = precio;
-        this.codigo = codigo;
+        
+       
         this.proveedor = proveedor;
         this.madera = madera;
     }
@@ -30,21 +27,9 @@ public class Compra {
         this.cantidad = cantidad;
     }
 
-    public float getPrecio() {
-        return precio;
-    }
+   
 
-    public void setPrecio(float precio) {
-        this.precio = precio;
-    }
-
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
+ 
 
     public Proveedor getProveedor() {
         return proveedor;

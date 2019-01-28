@@ -4,7 +4,7 @@ public class Madera {
 
     private String tipo;
 
-    private int cantidad=0;
+    private float cantidad=0;
 
     public Madera() {
     }
@@ -19,11 +19,11 @@ public class Madera {
 
    
 
-    public int getCantidad() {
+    public float getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(int cantidad) {
+    public void setCantidad(float cantidad) {
         this.cantidad = cantidad;
     }
     
