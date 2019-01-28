@@ -62,4 +62,8 @@ public class Compra {
         this.madera = madera;
     }
     
+    public void agregarMadera(Compra c){
+        
+    }
+   
 }
